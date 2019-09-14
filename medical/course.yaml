@@ -1,0 +1,8 @@
+- course:
+    id: 2
+    display-type: alert-warning
+    image: "https://via.placeholder.com/160x100"
+    link: xi-and-xii
+    level: 1
+    track-id : [2]
+    title: "Botany"

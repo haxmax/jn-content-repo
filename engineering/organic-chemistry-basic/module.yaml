@@ -1,0 +1,21 @@
+- module:
+    display-type: alert-warning
+    image: "https://via.placeholder.com/100x45"
+    link: toc/organic-essential-basics
+    level: 1
+    course-id: [12]
+    title: "Organic Chemistry - Essential Basic"
+- module:
+    display-type: alert-warning
+    image: "https://via.placeholder.com/100x45"
+    link: module/kinematics
+    level: 1
+    course-id: [12]
+    title: "Organic Chemistry - Building Concepts"
+- module:
+    display-type: alert-warning
+    image: "https://via.placeholder.com/100x45"
+    link: module/Electrostatics
+    level: 1
+    course-id: [12]
+    title: "Organic Chemistry - Refering TextBook"
