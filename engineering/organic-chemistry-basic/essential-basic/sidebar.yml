@@ -1,16 +1,16 @@
 - title: Introduction
   key: introduction-sidebar   
-  link: /articles/kinematics/1_Introduction
+  link: /content/engineering/organic-chemistry-basic/essential-basic/introduction
   ui: steps
   items:
     - title: 1. Introduction
-      link: /articles/kinematics/1_Introduction    
-    - title: Physics and nature
-      link: /articles/kinematics/1_Introduction#physics-and-nature
-    - title: Branches of Physics
-      link: /articles/kinematics/1_Introduction#branches-of-Physics
+      link: /content/engineering/organic-chemistry-basic/essential-basic/introduction    
+    - title: Quantum Mechanics
+      link: /content/engineering/organic-chemistry-basic/essential-basic/quantum-mechanics
+    - title: Ionic and Covalent Bond
+      link: /content/engineering/organic-chemistry-basic/essential-basic/ionic-and-covalent-bond
     - title: Questions
-      link: /articles/kinematics/1_Introduction#questions
+      link: //content/engineering/organic-chemistry-basic/essential-basic/molecular-orbital-theory
       ui: steps
       items:
         - title: 1.1 Introduction
