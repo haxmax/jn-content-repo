@@ -1,7 +1,6 @@
-- title: Introduction
+- title: Organic Chemistry
   key: introduction-sidebar   
-  link: /content/engineering/organic-chemistry-basic/essential-basic/introduction
-  ui: steps
+  link: /content/engineering/organic-chemistry-basic/essential-basic/introduction  
   items:
     - title: Introduction
       link: /content/engineering/organic-chemistry-basic/essential-basic/introduction    
@@ -10,8 +9,7 @@
     - title: Ionic and Covalent Bond
       link: /content/engineering/organic-chemistry-basic/essential-basic/ionic-and-covalent-bond
     - title: Questions
-      link: //content/engineering/organic-chemistry-basic/essential-basic/molecular-orbital-theory
-      ui: steps
+      link: /content/engineering/organic-chemistry-basic/essential-basic/molecular-orbital-theory
       items:
         - title: 1.1 Introduction
           link: /articles/kinematics/1_Introduction    
