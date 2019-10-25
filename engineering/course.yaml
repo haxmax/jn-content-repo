@@ -9,7 +9,7 @@
 - course:
     id: 12
     display-type: alert-warning
-    image: "https://via.placeholder.com/160x100"
+    image: ../images/basic-chem.png
     link: /course/basic-chemistry
     level: 0
     track-id : [1]
