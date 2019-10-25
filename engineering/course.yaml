@@ -1,7 +1,7 @@
 - course:
     id: 1
     display-type: alert-warning
-    image: "https://via.placeholder.com/160x100"
+    image: ../images/core-physics.png
     link: /course/core-physics
     level: 0
     track-id : [1]
