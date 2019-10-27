@@ -17,7 +17,7 @@
 - course:
     id: 13
     display-type: alert-warning
-    image: ../images/core-physics.png
+    image: ../images/basic-math.png
     link: /course/core-pcm
     level: 0
     track-id : [1]

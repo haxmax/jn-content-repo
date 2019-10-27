@@ -1,7 +1,7 @@
 - course:
     id: 2
     display-type: alert-warning
-    image: "https://via.placeholder.com/160x100"
+    image: ../images/basic-chem.png
     link: xi-and-xii
     level: 1
     track-id : [2]
