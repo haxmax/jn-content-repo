@@ -1,14 +1,14 @@
 - title: Introduction
-  key: kinematics   
+  key: kinematics-sidebar   
   link: /articles/kinematics/1_Introduction
   ui: steps
   items:
-    - title: 1. Introduction
-      link: /articles/kinematics/1_Introduction    
-    - title: Physics and nature
-      link: /articles/kinematics/1_Introduction#physics-and-nature
-    - title: Branches of Physics
-      link: /articles/kinematics/1_Introduction#branches-of-Physics
+    - title: Introduction
+      link: /content/engineering/physics/kinematics/Introduction    
+    - title: Unit & Mesurements
+      link: /content/engineering/physics/kinematics/Introduction
+    - title: Scales
+      link: /content/engineering/physics/kinematics/Introduction
     - title: Questions
-      link: /articles/kinematics/1_Introduction#questions
+      link: /content/engineering/physics/kinematics/Introduction
 
