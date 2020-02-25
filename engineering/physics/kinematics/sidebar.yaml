@@ -11,4 +11,14 @@
       link: /content/engineering/physics/kinematics/physics-and-mathematics
     - title: Questions
       link: /content/engineering/physics/kinematics/basic-question-1
+- title: Rest and Motion
+  key: kinematics-sidebar-2   
+  link: /articles/kinematics/rest-and-motion
+  ui: steps
+  items:
+    - title: Motion in straight line
+      link: /content/engineering/physics/kinematics/motion-in-straight-line   
+    - title: Motion in plane
+      link: /content/engineering/physics/kinematics/motion-in-plane
+    
 

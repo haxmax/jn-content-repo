@@ -3,8 +3,8 @@
   items:
     - title: 0. Introduction
       link: /content/engineering/physics/kinematics/Introduction/    
-    - title: 1. Distance And Displacement
-      link: /articles/kinematics/#test
+    - title: 1. Rest and Motion
+      link: /articles/kinematics/rest-and-motion
     - title: 2. Acceleration and Projectile Motion
       link: /articles/kinematics/#test
     - title: 3. Force & Newtons Law of motion
