@@ -1,0 +1,7 @@
+- module:
+    display-type: alert-warning
+    image: ../../images/basic-chem.png
+    link: toc/calculus
+    level: 1
+    course-id: [13]
+    title: "Calculus"
