@@ -18,10 +18,10 @@
     id: 13
     display-type: alert-warning
     image: ../images/basic-math.png
-    link: /course/core-pcm
+    link: /course/maths-concept
     level: 0
     track-id : [1]
-    title: "Core Maths"
+    title: "Mathematical Concept"
 - course:
     id: 2
     display-type: alert-warning
