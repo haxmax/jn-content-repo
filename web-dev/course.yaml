@@ -1,0 +1,16 @@
+- course:
+    id: 301
+    display-type: alert-warning
+    image: ../images/core-physics.png
+    link: /course/core-physics
+    level: 0
+    track-id: [1]
+    title: "Core Physics"
+- course:
+    id: 302
+    display-type: alert-warning
+    image: ../images/basic-chem.png
+    link: /course/basic-chemistry
+    level: 0
+    track-id: [1]
+    title: "Basic Chemistry"
