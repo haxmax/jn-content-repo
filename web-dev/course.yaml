@@ -2,15 +2,15 @@
     id: 301
     display-type: alert-warning
     image: ../images/core-physics.png
-    link: /course/core-physics
+    link: /course/frontend-development
     level: 0
-    track-id: [1]
-    title: "Core Physics"
+    track-id: [5]
+    title: "Frontend Development"
 - course:
     id: 302
     display-type: alert-warning
     image: ../images/basic-chem.png
-    link: /course/basic-chemistry
+    link: /course/backend-development
     level: 0
-    track-id: [1]
-    title: "Basic Chemistry"
+    track-id: [5]
+    title: "Backend Development"

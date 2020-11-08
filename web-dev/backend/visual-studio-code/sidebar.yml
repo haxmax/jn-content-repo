@@ -1,0 +1,19 @@
+- title: Introduction
+  key: vscode-sidebar
+  link: /articles/vscode
+  ui: steps
+  items:
+    - title: 0. Introduction to Visual Studio Code
+      link: /content/web-dev/backend/visual-studio-code/Introduction
+    - title: 1. Layout and views
+      link: /content/web-dev/backend/visual-studio-code/different-views
+    - title: 2. Emmets and keyword shortcuts
+      link: /content/web-dev/backend/visual-studio-code/emmets-shortcuts
+    - title: 3. Linting and Intellisense
+      link: /content/web-dev/backend/visual-studio-code/intellisense-linting
+    - title: 4. Most used Extensions
+      link: /content/web-dev/backend/visual-studio-code/extensions
+    - title: 5. Extend Visual Studio by adding snippets
+      link: /content/web-dev/backend/visual-studio-code/adding-snippets
+    - title: 6. Import keyword maps or Add keyword shortcuts
+      link: /content/web-dev/backend/visual-studio-code/keymaps

@@ -1,0 +1,61 @@
+---
+title: Emmets and keyboard shortcuts.
+sidebar: vscode-sidebar
+label: article
+disableTableOfContents: false
+tableOfContentsDepth: 2
+typora-copy-images-to: ./
+---
+
+Snippets is very useful. Effective use increases productivity.
+
+## Snippets
+
+Many Snippets are available through extensions like "ES7 React/Redux/React-Native/JS snippets".
+These snippets reduce a lot of boiler plate code.
+
+### Adding your own snippets
+
+Adding your own snippets is very simple in vscode.
+
+- Just type `Ctrl + Shift + P` is launch Command.
+- Type `snippets` to search
+- Select `Preferences: Configure User Snippets`
+- Select `Javascript.json`
+
+```
+{
+	// Snippets Example:
+	 "Print to console": {
+	 	"prefix": "log",
+	 	"body": [
+	 		"console.log('$1');",
+	 		"$2"
+	 	],
+	 	"description": "Log output to console"
+    }
+}
+```
+
+Each snippet is defined under a snippet name and has a prefix, body and description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+
+`$1`, `$2` for tab stops, `$0` for the final cursor position, and `${1:label}`, `${2:another}` for placeholders.
+
+Placeholders with the same ids are connected.
+
+### Snippets using keyboard shortcuts
+
+You can create custom keybindings to insert specific snippets. Open keybindings.json (Preferences: Open Keyboard Shortcuts File), which defines all your keybindings, and add a keybinding passing "snippet" as an extra argument:
+
+```
+{
+    "key": "cmd+k 1",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+    "snippet": "console.log($1)$0"
+    }
+}
+```
+
+The keybinding will invoke the Insert Snippet command but instead of prompting you to select a snippet, it will insert the provided snippet. You define the custom keybinding as usual with a keyboard shortcut, command ID, and optional when clause context for when the keyboard shortcut is enabled.
