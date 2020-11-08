@@ -1,5 +1,5 @@
 ---
-title: Emmets and keyboard shortcuts.
+title: Keymaps in Visual Studio code.
 sidebar: vscode-sidebar
 label: article
 disableTableOfContents: false
@@ -7,13 +7,62 @@ tableOfContentsDepth: 2
 typora-copy-images-to: ./
 ---
 
-Different types of windows in visual studio code.
+If you are coming from different editor/IDE, you can import keymaps from your previous environment or simply add extension.
 
-## Introduction
+## Keymaps
 
-Free, lightweight, open source. Available on windows, linux and MacOS.
+### Keyboard rules
 
+Each rule consists of:
 
-### ✋ Questions
+- a key that describes the pressed keys.
+- a command containing the identifier of the command to execute.
+- an optional when clause containing a boolean expression that will be evaluated depending on the current context.
+
+Chords (two separate keypress actions) are described by separating the two keypresses with a space. For example, Ctrl+K Ctrl+C.
+
+When a key is pressed:
+
+- the rules are evaluated from bottom to top.
+- the first rule that matches, both the key and in terms of when, is accepted.
+- no more rules are processed.
+- if a rule is found and has a command set, the command is executed.
+
+The additional keybindings.json rules are appended at runtime to the bottom of the default rules, thus allowing them to overwrite the default rules. The keybindings.json file is watched by VS Code so editing it while VS Code is running will update the rules at runtime.
+
+The keyboard shortcuts dispatching is done by analyzing a list of rules that are expressed in JSON. Here are some examples:
+
+```
+// Keybindings that are active when the focus is in the editor
+{ "key": "home",            "command": "cursorHome",                  "when": "editorTextFocus" },
+{ "key": "shift+home",      "command": "cursorHomeSelect",            "when": "editorTextFocus" },
+
+//
+// Keybindings that are complementary
+{ "key": "f5",              "command": "workbench.action.debug.continue", "when": "inDebugMode" },
+{ "key": "f5",              "command": "workbench.action.debug.start",    "when": "!inDebugMode" },
+
+//
+// Global keybindings
+{ "key": "ctrl+f",          "command": "actions.find" },
+{ "key": "alt+left",        "command": "workbench.action.navigateBack" },
+{ "key": "alt+right",       "command": "workbench.action.navigateForward" },
+
+//
+// Global keybindings using chords (two separate keypress actions)
+{ "key": "ctrl+k enter",    "command": "workbench.action.keepEditor" },
+{ "key": "ctrl+k ctrl+w",   "command": "workbench.action.closeAllEditors" },
+
+```
+
+### Keymap extension
+
+The VS Code team provides keymaps for the most popular editors out of the box: vim, Sublime Text, Atom, IntelliJ, Eclipse and more. They are available as plugins. By opening the Preferences ➤ Keymaps Extensions menu.
+
+### ✋ Feedback
+
+For feedback you can mail to `admin@justnotes.in`
 
 ## ➡️ What’s Next?
+
+Use <a href="https://code.visualstudio.com/docs" target="_blank">Visual Studio Docs</a> when ever you need more information. By then you should just start coding by typing code . in your folder/project/workspace.

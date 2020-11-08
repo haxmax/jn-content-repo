@@ -1,5 +1,5 @@
 ---
-title: Emmets and keyboard shortcuts.
+title: Emmets and keyboard shortcuts
 sidebar: vscode-sidebar
 label: article
 disableTableOfContents: false
