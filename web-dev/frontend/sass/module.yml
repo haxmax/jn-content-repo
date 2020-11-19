@@ -1,0 +1,7 @@
+- module:
+    display-type: alert-warning
+    image: ../../../images/core-physics.png
+    link: toc/sass-and-less
+    level: 1
+    course-id: [301]
+    title: "Sass & Less"

@@ -1,0 +1,125 @@
+---
+title: LESS Basics
+sidebar: toc/sass-and-less
+label: article
+disableTableOfContents: false
+tableOfContentsDepth: 2
+---
+
+Less (Leaner Style Sheets; sometimes stylized as LESS) is a dynamic preprocessor style sheet language that can be compiled into Cascading Style Sheets (CSS) and run on the client side or server side.
+
+This tutorial is inspired from Less official website
+
+## Less vs Sass
+
+Both Sass and Less are CSS preprocessors, which allow writing clean CSS in a programming construct instead of static rules.
+
+Less is inspired by Sass. Sass was designed to both simplify and extend CSS, so things like curly braces were removed from the syntax. Less was designed to be as close to CSS as possible, and as a result existing CSS can be used as valid Less code.
+
+The newer versions of Sass also introduced a CSS-like syntax called SCSS (Sassy CSS).
+
+## Variables
+
+Variables are declared using `@` symbols and ends with `:`.
+
+Less syntax
+
+```less
+@width: 10px;
+@height: @width + 10px;
+
+#header {
+  width: @width;
+  height: @height;
+}
+```
+
+Outputs:
+
+```css
+#header {
+  width: 10px;
+  height: 20px;
+}
+```
+
+## Mixins
+
+Mixins are a way of including ("mixing in") a bunch of properties from one rule-set into another rule-set. For example:
+
+```css
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+```
+
+you want to use the properties of `.bordered` inside other rule-sets. you just have to drop in the name of the class where we want the properties, like so:
+
+```less
+#menu a {
+  color: #111;
+  .bordered();
+}
+
+.post a {
+  color: red;
+  .bordered();
+}
+```
+
+The properties of the .bordered class will now appear in both #menu a and .post a. (Note that you can also use #ids as mixins.
+
+## Nesting
+
+Less gives you the ability to use nesting instead of, or in combination with cascading. Let's say we have the following CSS:
+
+```css
+#header {
+  color: black;
+}
+#header .navigation {
+  font-size: 12px;
+}
+#header .logo {
+  width: 300px;
+}
+```
+
+In Less, we can also write it this way:
+
+```less
+#header {
+  color: black;
+  .navigation {
+    font-size: 12px;
+  }
+  .logo {
+    width: 300px;
+  }
+}
+```
+
+The resulting code is more concise, and mimics the structure of your HTML.
+
+You can also bundle pseudo-selectors with your mixins using this method. Here's the classic clearfix hack, rewritten as a mixin (& represents the current selector parent):
+
+```css
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+```
+
+### Operations
+
+Arithmetical operations +, -, \*, / can operate on any number, color or variable.
