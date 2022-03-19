@@ -1,0 +1,46 @@
+---
+title: Debugging a NodeJs Application
+sidebar: api-nodejs-sidebar
+label: article
+disableTableOfContents: false
+tableOfContentsDepth: 2
+typora-copy-images-to: ./
+---
+
+## Debugger
+
+how a debugger works
+How the debugger knows how to stop on a breakpoint?
+
+The simplified answer is: When you put a break-point into the program, the debugger replaces your code at that point with a int3 instruction which is a software interrupt. As an effect the program is suspended and the debugger is called.
+
+You have mainly three ways to debug a NodeJs Application.
+Command line option is deprecated while debugger with GUI is more popular.
+
+### Command Line Debugger
+
+```bash
+node debug  // deprecated now
+node inspect
+```
+
+### Chrome Debugger
+
+```bash
+node --inspect
+node --inspect-brk // same as node --inspect however, it breaks on first line of code.
+```
+
+Point to be noted as `node inspect` is a command line debugger while `node --inspect` is graphical interface debugger
+
+For debugging we need to understand following points.
+
+- adding break point
+- adding watches
+- Call Stack
+
+black box feature of chrome Debugger
+
+When you will add any script to blackbox then debugger will not pause in that script. Adding script can be done in call stack windows in chrome developer tools.
+
+## VS Code Debugger

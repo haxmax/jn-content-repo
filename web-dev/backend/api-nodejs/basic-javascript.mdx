@@ -1,0 +1,309 @@
+---
+title: Javascript at a glance
+sidebar: api-nodejs-sidebar
+label: article
+disableTableOfContents: false
+tableOfContentsDepth: 2
+typora-copy-images-to: ./
+---
+
+Javascript is from a long time. It was mostly used for scripting purpose in browser as browser would understand HTML, CSS, Javascript. Now, javascript is no longer limited to browser, it is used in almost every thing with the help of node environment/runtime.
+
+Modern javascript is termed as javascript after ES5 version. To use modern javascript, it must be enabled by `use strict`;
+
+```js
+    "use strict"; \\ it must be on top of your script
+
+    \\ other scripts
+
+```
+
+> Use script is used to avoid compatibility issue. If you will use any framework, it is used by in framework itself.
+
+## const and let
+
+In modern javascript, most of variable is defined with const and let syntax. Earlier, var was used to define variable. Variable defined with let and const has block level scope.
+
+```js
+let message = "Hello"
+message = "Hello world"
+
+const age = 28
+age = 29 // will give error const variable can't be changed
+
+const website = { name: "justnotes", url: "justnotes.in" }
+website.url = "www.justnotes.in" // here object website reference is constant while we can change it content
+website = { name: "anotherwebsite" } // this will give error as we can't change const variable.
+```
+
+## Datatypes
+
+There are 8 basic data types in JavaScript.
+
+- `number` for numbers of any kind: integer or floating-point.
+- `bigint` is for integer numbers of arbitrary length.
+- `string` for strings. A string may have zero or more characters, there’s no separate single-character type.
+- `boolean` for true/false.
+- `null` for unknown values – a standalone type that has a single value null.
+- `undefined` for unassigned values – a standalone type that has a single value undefined.
+- `object` for more complex data structures.
+- `symbol` for unique identifiers. (see MDN or search `symbol mdn`)
+
+The `typeof` operator allows us to see which type is stored in a variable.
+
+### Most used concepts
+
+It is very important for you to understand arrow functions in javascript. Arrow functions is a simple and concise syntax for creating functions. In javascript, method can also be passed in functions like variable.
+Passing a function as a parameter and calling as need is termed as callback functions.
+Earlier callback was used to do most of asynchronous task. But it lead to issue of cyclic callback also known as callback hell. Now, with introduction of promises in javascript, we can do asynchronous work with async await syntax very easily.
+
+## Arrow functions
+
+Arrow function is very simple and concise syntax for creating functions. It is often considered better than Function Expressions.
+
+```js
+function sum(a, b) {
+  return a + b
+}
+
+const result = sum(4, 5)
+```
+
+Let us consider the above function and break down its components.
+
+- function has a name e.g. sum
+- function has argument e.g. a, b
+- function has body which contains the logic
+- function has a return statement which return result where it is called.
+
+In arrow function syntax, most important is body of function and argument rest all are optional. Same function can be written in three ways below. It is as per the need of developer, how much slimmer version you need.
+
+```
+(a, b) => a + b
+or
+const sum = (a, b) => a + b
+or
+const sum = (a, b) => {
+  return a + b
+}
+```
+
+```js
+let func = (arg1, arg2, ..., argN) => expression
+```
+
+This is slim version of function written below.
+
+```js
+let func = function(arg1, arg2, ..., argN) {
+  return expression;
+};
+```
+
+### Difference between arrow and normal function
+
+Arrow function is not syntactic sugar. It is different from normal function.
+
+Arrow function has no `this`.
+
+```js
+let team = {
+  name: "Our Team",
+  members: ["Foo", "Bar", "Alice"],
+
+  showList() {
+    this.members.forEach((member) => alert(this.name + ": " + member))
+  },
+}
+
+group.showList()
+```
+
+Here, this does not represent the arrow function context while this is simple not available. So, Lookup of this is made exactly like a regular variable i.e. outer lexical environment.
+
+Now, Let us see how to write the same function without arrow function.
+
+```js
+let team = {
+  name: "Our Team",
+  members: ["Foo", "Bar", "Alice"],
+
+  showList() {
+    this.members.forEach(function (member) {
+      // Error: Cannot read property 'name' of undefined
+      alert(this.name + ": " + member)
+    })
+  },
+}
+
+group.showList()
+```
+
+## Object and arrays
+
+Objects store properties (key-value pairs), where:
+
+- Property keys must be strings or symbols (usually strings).
+- Values can be of any type.
+
+```js
+let user = {
+  name : 'Abhishek'
+  age : 28
+}
+```
+
+### Destructuring
+
+Destructuring is a special syntax that allows us to “unpack” arrays or objects into a bunch of variables.
+
+```js
+let arr = ["Justin", "Bieber"]
+
+// destructuring assignment
+// sets firstName = arr[0]
+// and surname = arr[1]
+let [firstName, surname] = arr
+
+alert(firstName) // Justin
+alert(surname) // Bieber
+
+let [a, b, c] = "abc" // ["a", "b", "c"]
+let [one, two, three] = new Set([1, 2, 3])
+```
+
+> 💡 Array is special type of object in javascript. In object every element is stored in key value pair while in array it is stored in sequential order. Most of operations can be used on both of them interchangeably.
+
+### Spread operator
+
+Spread syntax (...) allows an iterable such as an array expression or string to be expanded in places where zero or more arguments.
+
+The spread operator is a useful and quick syntax for adding items to arrays, combining arrays or objects, and spreading an array out into a function’s arguments.
+
+```js
+\\Concatenating array
+const myArray = [`🤪`,`🐻`,`🎌`]
+const yourArray = [`🙂`,`🤩`]
+const ourArray = [...myArray,...yourArray]
+console.log(...ourArray) // 🤪 🐻 🎌 🙂 🤩
+
+\\Adding an item to an array
+const fewFruit = ['🍏','🍌']
+const fewMoreFruit = ['🍉', '🍍', ...fewFruit]
+console.log(fewMoreFruit) //  Array(5) [ "🍉", "🍍", "🍏",  "🍌" ]
+```
+
+## Promises and Async await
+
+Asynchronous programming is a means of parallel programming in which a unit of work runs separately from the main application thread and notifies the calling thread of its completion, failure or progress.
+
+Asynchronous programming has several benefits like better cpu utilization, performance, flexiblity and better user experience. In javascript, we use promise to do asynchronous programming.
+
+### Promises
+
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+Here's some code that uses createAudioFileAsync():
+
+```js
+function successCallback(result) {
+  console.log("Audio file ready at URL: " + result)
+}
+
+function failureCallback(error) {
+  console.error("Error generating audio file: " + error)
+}
+
+createAudioFileAsync(audioSettings, successCallback, failureCallback)
+```
+
+In the example above, you will see that createAudioFileAsync() was able to do asynchronous job with the help of callback. If createAudioFileAsync() were rewritten to return a promise, you would attach your callbacks to it instead:
+
+```js
+createAudioFileAsync(audioSettings).then(successCallback, failureCallback)
+```
+
+This convention has several advantages like method can be chained, better error handling and more readable code.
+
+### Async await syntax
+
+Async await syntax is syntactic sugar over promise. It helps in writing more readable code. Most of time we use promises defined by javascript library, instead of creating them. So, lets us see how to use them first.
+
+```js
+async function getUser() {
+  try {
+    const response = await axios.get('/user?ID=12345');
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+\\ calling above function
+const data = await getUser();
+```
+
+Here the most important thing
+
+- function should be marked async.
+- function should always be called with await.
+
+## Conventions in javascript
+
+Conventions is the first steps towards quality code. Professional never think conventions are optional.
+Conventions varies with company while listed below is most commonly used.
+
+- Variable and function names written as camelCase
+- Global variables written in UPPERCASE (We don't, but it's quite common)
+- Constants (like PI) written in UPPERCASE
+- lowercase in filename, use dash(-) to separate them e.g feedback-form.js.
+
+> 💡 Most web servers (Apache, Unix) are case sensitive about file names while other web servers (Microsoft, IIS) are not case sensitive. If you use a mix of upper and lower case, you have to be extremely consistent. If you move from a case insensitive, to a case sensitive server, even small errors can break your web site.To avoid these problems, always use lower case file names (if possible).
+
+## Lodash
+
+Lodash is a JS helper library for arrays, strings and objects. It is very light(only 70KB), mature, efficient. It is used in most of the project to do some operation on collections or string.
+
+```js
+import _ from 'lodash'; \\ lodash is generally imported in this way.
+```
+
+Following are most used functions of lodash:
+
+| Method Name | Description                                                                                                             |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------- |
+| isEqual     | performs a deep comparison between two values.                                                                          |
+| isEmpty     | checks if value is an empty object, collection, map, or set.                                                            |
+| get         | gets the value at the path of an object. If the resolved value is undefined, the defaultValue is returned in its place. |
+| sortBy      | method creates an array of elements, sorted in ascending/descending order.                                              |
+| union       | returns the unique values from all the arrays passed.                                                                   |
+| cloneDeep   | returns a clone/copy of an object recursively.                                                                          |
+| debounce    | allows us to call a function after some milliseconds have passed.                                                       |
+
+```js
+const obj1 = {
+  name: "Ram",
+  age: 20,
+  location: {
+    city: "NY",
+    state: "NY",
+  },
+}
+
+const obj2 = {
+  name: "Ram",
+  age: 20,
+  location: {
+    city: "NY",
+    state: "NY",
+  },
+}
+
+console.log(_.isEqual(obj1, obj2)) // true
+```
+
+If you want to know new features of javascript you can follow this [link.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+
+More read on [promises.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+
+lodash [documentation.](https://lodash.com/docs)

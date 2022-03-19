@@ -1,0 +1,7 @@
+- module:
+    display-type: alert-warning
+    image: ../../../images/core-physics.png
+    link: toc/rest-api-using-nodejs
+    level: 1
+    course-id: [302]
+    title: "REST API using Node.js"

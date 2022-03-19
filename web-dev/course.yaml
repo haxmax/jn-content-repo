@@ -14,3 +14,11 @@
     level: 0
     track-id: [5]
     title: "Backend Development"
+- course:
+    id: 303
+    display-type: alert-warning
+    image: ../images/basic-chem.png
+    link: /course/software-infrastructure
+    level: 0
+    track-id: [5]
+    title: "Software Infrastructure"

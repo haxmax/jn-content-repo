@@ -1,0 +1,19 @@
+- title: Modern Javascript
+  link: /articles/javascript/
+  items:
+    - title: 0. Modern Javascript
+      link: /content/web-dev/frontend/javascript/modern-javascript/
+    - title: 1. Variables
+      link: /content/web-dev/frontend/sass/sass-basics
+    - title: 2. Functions
+      link: /content/web-dev/frontend/sass/less-basics
+    - title: 3. Insights
+      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
+    - title: 4. Practice (Scope chain)
+      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
+    - title: 5. NodeJs and Browser Environment
+      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
+    - title: 6. Closures
+      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
+    - title: 7. Event Loop
+      link: /content/web-dev/frontend/sass/customize-bootstrap-sass

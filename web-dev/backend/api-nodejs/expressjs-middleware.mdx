@@ -1,0 +1,259 @@
+---
+title: ExpressJs Middleware
+sidebar: api-nodejs-sidebar
+label: article
+disableTableOfContents: false
+tableOfContentsDepth: 2
+typora-copy-images-to: ./
+---
+
+## ExpressJs
+
+ExpressJs is fast, unopinionated, minimalist web framework for Node.js
+
+Express is not opinionated as it does not tell right way of doing things.
+Many other framework often suggest the right way and restrict user while express is flexible enough with fewer restriction.
+
+## Installation
+
+Make sure you have node install.Preferably use nvm to install node. To check node `node -v` should show version of node.
+
+```bash
+    #For npm
+    npm i express
+    #For yarn
+    yarn add express
+```
+
+### Hello World example
+
+```js
+const express = require("express")
+const app = express()
+const port = 3000
+
+app.get("/", (req, res) => {
+  res.send("Hello World!")
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+```
+
+The same is provided by nodejs. So, why do we need express?
+Simple answer is express provide more feature like routing, view using template engine and middleware. If you will compare code with same functionality written in nodejs vs express, you will find less code and more readable code in express.
+
+```ts
+import { Request, Response, Application } from "express"
+const app: Application = require("express")()
+
+const port = 3000
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!")
+})
+
+app.listen(port, () => {
+  console.log(`App is listenting at port ${port}`)
+})
+```
+
+This typescript version is as js version.However, you can see now we can use import statement and the object provided by express is much more verbose.
+
+## Middleware
+
+Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named next.
+
+Express is a routing and middleware web framework that has minimal functionality of its own: An Express application is essentially a series of middleware function calls.
+
+Middleware functions can perform the following tasks:
+
+- Execute any code.
+- Make changes to the request and the response objects.
+- End the request-response cycle.
+- Call the next middleware function in the stack.
+
+An Express application is all about middleware. you can use the following types of middleware:
+
+- Application-level middleware
+- Router-level middleware
+- Error-handling middleware
+- Built-in middleware
+- Third-party middleware
+
+### Application-level middleware
+
+Bind application-level middleware to an instance of the app object by using the app.use() and app.METHOD() functions, where METHOD is the HTTP method of the request that the middleware function handles (such as GET, PUT, or POST) in lowercase.
+
+This example shows a middleware function with no mount path. The function is executed every time the app receives a request.
+
+```js
+var express = require("express")
+var app = express()
+
+app.use(function (req, res, next) {
+  console.log("Time:", Date.now())
+  next()
+})
+```
+
+This example shows a middleware function mounted on the /user/:id path. The function is executed for any type of HTTP request on the /user/:id path.
+
+```js
+app.use("/user/:id", function (req, res, next) {
+  console.log("Request Type:", req.method)
+  next()
+})
+```
+
+### Router-level Middleware
+
+Router-level middleware
+Router-level middleware works in the same way as application-level middleware, except it is bound to an instance of express.Router().
+
+`var router = express.Router()`
+Load router-level middleware by using the router.use() and router.METHOD() functions.
+
+The following example code replicates the middleware system that is shown above for application-level middleware, by using router-level middleware:
+
+```js
+var express = require("express")
+var app = express()
+var router = express.Router()
+
+// a middleware function with no mount path. This code is executed for every request to the router
+router.use(function (req, res, next) {
+  console.log("Time:", Date.now())
+  next()
+})
+
+// a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
+router.use(
+  "/user/:id",
+  function (req, res, next) {
+    console.log("Request URL:", req.originalUrl)
+    next()
+  },
+  function (req, res, next) {
+    console.log("Request Type:", req.method)
+    next()
+  }
+)
+
+// a middleware sub-stack that handles GET requests to the /user/:id path
+router.get(
+  "/user/:id",
+  function (req, res, next) {
+    // if the user ID is 0, skip to the next router
+    if (req.params.id === "0") next("/invalid")
+    // otherwise pass control to the next middleware function in this stack
+    else next()
+  },
+  function (req, res, next) {
+    // render a regular page
+    res.render("regular")
+  }
+)
+
+// handler for the /user/:id path, which renders a special page
+router.get("/user/:id", function (req, res, next) {
+  console.log(req.params.id)
+  res.render("special")
+})
+
+// mount the router on the app
+app.use("/", router)
+```
+
+### Error-handling middleware
+
+Define error-handling middleware functions in the same way as other middleware functions, except with four arguments instead of three, specifically with the signature (err, req, res, next)):
+
+```js
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send("Something broke!")
+})
+```
+
+> 💡 Error-handling middleware always takes four arguments. You must provide four arguments to identify it as an error-handling middleware function. Even if you don’t need to use the next object, you must specify it to maintain the signature. Otherwise, the next object will be interpreted as regular middleware and will fail to handle errors.
+
+### Built-in middleware
+
+Express has the following built-in middleware functions:
+
+- `express.static` serves static assets such as HTML files, images, and so on.
+- `express.json` parses incoming requests with JSON payloads. NOTE: Available with Express 4.16.0+
+- `express.urlencoded` parses incoming requests with URL-encoded payloads. NOTE: Available with Express 4.16.0+
+
+### Third-party middleware
+
+Use third-party middleware to add functionality to Express apps.
+
+Install the Node.js module for the required functionality, then load it in your app at the application level or at the router level.
+
+The following example illustrates installing and loading the cookie-parsing middleware function cookie-parser.
+
+```bash
+$ npm install cookie-parser
+```
+
+```js
+var express = require("express")
+var app = express()
+var cookieParser = require("cookie-parser")
+
+// load the cookie-parsing middleware
+app.use(cookieParser())
+```
+
+What is middleware and why do we need it.
+
+### Commonly used middleware
+
+These are commonly used middleware which you will see almost all web application.
+
+- cors
+- morgan
+- compression
+- https
+- helmet
+
+```js
+var express = require("express")
+var cors = require("cors")
+var morgan = require("morgan")
+var compression = require("compression")
+var fs = require("fs")
+var https = require("https")
+var helmet = require("helmet")
+var app = express()
+
+app.use(morgan("common"))
+app.use(helmet())
+app.use(
+  cors({
+    origin: ["http://localhost:3001"],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+)
+app.use(compression())
+
+app.get("/", function (req, res) {
+  res.json({
+    status: "My API is alive!",
+  })
+})
+
+var credentials = {
+  key: fs.readFileSync("my-api.key", "utf8"),
+  cert: fs.readFileSync("my-api.cert", "utf8"),
+}
+https.createServer(credentials, app).listen(3000, function () {
+  console.log("My API is running...")
+})
+
+module.exports = app
+```

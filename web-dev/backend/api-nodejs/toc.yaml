@@ -1,0 +1,23 @@
+- title: REST API using NodeJs
+  link: /articles/api-nodejs/
+  items:
+    - title: 0. Introduction to NodeJs
+      link: /content/web-dev/backend/api-nodejs/Introduction
+    - title: 1. NodeJs Module System
+      link: /content/web-dev/backend/api-nodejs/module-system
+    - title: 2. Javascript at a glance
+      link: /content/web-dev/backend/api-nodejs/basic-javascript
+    - title: 3. Typescript Basics
+      link: /content/web-dev/backend/api-nodejs/typescript
+    - title: 4. Middleware
+      link: /content/web-dev/backend/api-nodejs/expressjs-middleware
+    - title: 5. Authentication
+      link: /content/web-dev/backend/api-nodejs/authentication
+    - title: 6. Debugging a NodeJs Application
+      link: /content/web-dev/backend/api-nodejs/debugging-nodejs
+    - title: 7. Error Handling
+      link: /content/web-dev/backend/api-nodejs/debugging-nodejs
+    - title: 8. Unit Testing
+      link: /content/web-dev/backend/api-nodejs/unit-testing
+    - title: 9. Hosting
+      link: /content/web-dev/backend/api-nodejs/hosting

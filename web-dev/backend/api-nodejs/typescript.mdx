@@ -1,0 +1,304 @@
+---
+title: Typescript Basics
+sidebar: api-nodejs-sidebar
+label: article
+disableTableOfContents: false
+tableOfContentsDepth: 2
+typora-copy-images-to: ./
+---
+
+TypeScript is an open-source language which builds on JavaScript. With static type checking many error can be flagged at compile time rather than error at runtime. Flagging error is also helpful in showing errors at development time in IDE. This becomes great choice for server side web development.
+
+All valid JavaScript code is also typescript code.
+
+## Types
+
+Types provide a way to describe the shape of an object, providing better documentation, and allowing TypeScript to validate that your code is working correctly.
+
+```ts
+const message
+
+// Accessing the property 'toLowerCase'
+// on 'message' and then calling it
+message.toLowerCase()
+// Calling 'message'
+message()
+```
+
+Here we don't know about message. Message is callable or not. Message can be something like a string or it may contain a reference of a function.So, both line of code will compile.
+
+If we just add type to above code.
+
+```ts
+const message: string
+message.toLowerCase()
+
+message() // Calling message will throw an error as `message is not a function`
+```
+
+## Typescript Compiler `tsc`
+
+```bash
+npm install -g typescript
+```
+
+To compile a file hello.ts
+
+```bash
+tsc hello.ts
+
+```
+
+### Why do we use types?
+
+If you are coming from different language like java, python, c# etc then you may have confusion which method to call to change to uppercase i.e. toUpper , toUpperCase, Upper etc. if we use type here we get better code assist or better intellisense in IDE. Later, in this article you will see that when we use type definition of a javascript library we get a pretty amount documentation about it.
+
+- assist in type of variable.
+
+- helpful in finding properties of class
+
+- do compile type error checking and can show them in editor
+
+- function annotations
+
+- documentation on navigating to definition( `cntrl + click` )
+
+### Primitive Types
+
+`string`, `number`, `boolean`,`void`,`undefined`,`null`,`symbol`
+
+```ts
+let speed: string = "fast"
+let mySpeed: number = 50
+let anySpeed: string | number = "fast"
+anySpeed = 75
+let notAnyThing: null = null
+let nothing: undefined = undefined
+```
+
+### Object Types
+
+`array`,`object`, `class`, `function`
+
+```ts
+let now: Date = new Date()
+
+let shapes: string[] = ["circle", "square", "rectangle"]
+
+let location: { x: number; y: number } = {
+  x: 10,
+  y: 20,
+}
+
+const square: (i: number) => void = (i: number) => {
+  return i * i
+}
+
+\\ (i: number) => void is type definition of a function.
+```
+
+### Keyword `type`
+
+```ts
+type Point = {
+  x: number
+  y: number
+}
+
+// {x:number;y:number } can be replaced with type Point
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x)
+  console.log("The coordinate's y value is " + pt.y)
+}
+
+printCoord({ x: 100, y: 100 })
+```
+
+### Type annotations vs Type interference
+
+Whenever we explicitly tell typescript about its type then it is type annotations. However, when typescript automatically detect the type then it is type interference.
+
+Typescript can automatically detect its type when we declare and initialize on same line.
+
+option 1
+
+```ts
+    const total = 0; \\ typescript detect the type number
+```
+
+option 2
+
+```ts
+    const total;
+    total = 0;  \\ typescript can't detect the type so it assign a special type `any`
+```
+
+if we are in above situation then we need to specify the type explicitly.
+
+option 3
+
+```ts
+const total: number
+total = 0
+```
+
+You have noticed that whenever we need to specify type explicitly as ` const total:number = 0`
+
+> 💡 As specifying type is not necessary in option 1, we should always try to use to increase readability.
+
+## Interface and Class
+
+In javascript, class was introduced in es2015 syntax However, it has no interfaces. Javascript is dynamically typed language so, these type system is not at all expected.
+
+If you are coming from OOPs background, you will find similar concepts in typescript.
+
+### Class
+
+Es2015 class syntax has no property definition, it has definition for only member function. If you want to create property you can easily create with constructor argument.
+
+Javascript ES2015 class
+
+```js
+class Point {
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
+}
+```
+
+Same syntax can be written in typescript as
+
+```ts
+class Point {
+  constructor(x: number, y: number) {
+    this.x = x
+    this.y = y
+  }
+}
+
+//or
+
+class Point {
+  x: number
+  y: number
+  constructor(x = 0, y = 0) {
+    this.x = x
+    this.y = y
+  }
+}
+```
+
+Beside this typescript class can also have access modifier to set visibility of a member.
+
+- private : This is default modifier. Private members can be accessed inside the class.
+- protected : Protected members can be accessed in the class as well as the child class (classes extending class).
+- public : This is can be accessed anywhere. i.e. inside the class or by object of the class.
+
+> 💡 By adding access modifier to a member of a class does not mean that we are adding any layer of security to the code. It is only concerned with `How well the code is organized` or `how closely it is related to real world`.
+
+Same class can be written with the help of access modifier.
+
+```ts
+class Point {
+  x: number // private member
+  y: number // private member
+
+  public z: number //public member
+
+  // Normal signature with defaults
+  constructor(x = 0, y = 0) {
+    this.x = x
+    this.y = y
+  }
+}
+```
+
+### Inheritence with `extend`
+
+Classes may extend from a base class. A derived class has all the properties and methods of its base class, and also define additional members.
+
+```ts
+class Animal {
+  move() {
+    console.log("Moving along!")
+  }
+}
+
+class Dog extends Animal {
+  woof(times: number) {
+    for (let i = 0; i < times; i++) {
+      console.log("woof!")
+    }
+  }
+}
+
+const d = new Dog()
+// Base class method
+d.move() // will print `Moving along!`
+// Derived class method
+d.woof(3) // will print `woof!woof!woof1 `
+```
+
+### Interface
+
+```ts
+interface Pingable {
+  ping(): void
+}
+
+class Sonar implements Pingable {
+  ping() {
+    console.log("ping!")
+  }
+}
+
+class Ball implements Pingable {
+  //Class 'Ball' incorrectly implements interface 'Pingable'.
+  //Property 'ping' is missing in type 'Ball' but required in type 'Pingable'.
+  pong() {
+    console.log("pong!")
+  }
+}
+```
+
+## Tsnode
+
+ts-node is a TypeScript execution engine and REPL for Node.js.
+
+It JIT transforms TypeScript into JavaScript, enabling you to directly execute TypeScript on Node.js without precompiling. This is accomplished by hooking node's module loading APIs, enabling it to be used seamlessly alongside other Node.js tools and libraries.
+
+> 💡 The acronym REPL stands for read-eval-print loop and basically provides a programmer with an interactive programming environment.
+
+### Installation
+
+```bash
+# Locally in your project.
+npm install -D typescript
+npm install -D ts-node
+
+# Or globally with TypeScript.
+npm install -g typescript
+npm install -g ts-node
+
+# Depending on configuration, you may also need these
+npm install -D tslib @types/node
+
+```
+
+### Usages
+
+```bash
+# Execute a script as `node` + `tsc`.
+ts-node script.ts
+
+# Starts a TypeScript REPL.
+ts-node
+
+# Execute code with TypeScript.
+ts-node -e 'console.log("Hello, world!")'
+
+
+```
+
+For Typescript implementation sample [click here.](https://www.typescriptlang.org/docs/bootstrap)

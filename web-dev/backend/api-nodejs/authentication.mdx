@@ -1,0 +1,71 @@
+---
+title: Authentication
+sidebar: api-nodejs-sidebar
+label: article
+disableTableOfContents: false
+tableOfContentsDepth: 2
+typora-copy-images-to: ./
+---
+
+Authentication is needed on frontend and backend of application. You should understand this subject very well to understand the application.
+
+## Types of authentication
+
+There are mainly three types of authentication used in web development.
+
+- Session Based Authentication
+- Token Based Authentication
+- Claim Based Authentication
+
+In session based authentication, server has session storage which contains active session. Browsers stores session information in cookies and send session_id in each request and request is validated at server side. Some time people say cookies based authentication while they mean session based authentication. This is the oldest way of authentication and can lead to difficulty in scaling the application.
+
+For Token Based Authentication, let us see JWT first.
+
+### Json Web Token
+
+JSON Web Token (JWT) is a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified easily and trusted because it is digitally signed using a secret.
+
+What is the JSON Web Token structure?
+In its compact form, JSON Web Tokens consist of three parts separated by dots (.), which are:
+
+- Header
+- Payload
+- Signature
+  Therefore, a JWT typically looks like the following.
+
+`xxxxx.yyyyy.zzzzz`
+
+> 💡 Now a days, browser has `session storage`. Just like `local storage`, It can be accessed on client side only. Session storage is only meant to store data which will live until browser is closed.
+
+## Authentication Process
+
+When a user register or signup, we take user password, hash it and store in a database.
+
+When a user login we compare hashed user password with password stored in database and generate a token based on any unique id with the help of any secret which is stored in environment variable. This token is sent to browser where it is generally stored in cookies.
+
+On each request, token is appended with Bearer and sent to server with auth header. Server extract the token from auth header and validates with secret which is present in environment variable.
+
+### How to generate a token
+
+```js
+const jwt = require("jsonwebtoken")
+const token = jwt.sign({ _id: user._id.toString() }, "my_secret")
+```
+
+### Validating a token
+
+```js
+const jwt = require("jsonwebtoken")
+const token = req.header("Authorization").replace("Bearer ", "")
+const decoded = jwt.verify(token, "justnotes.in")
+```
+
+### Introduction to passport
+
+### Security in Authentication
+
+- Timming attack
+
+## Security notice
+
+In production, you should use a tested and robust solution to handle the authentication. Auth0, Firebase, Cognito and Passport.js are good examples. This tutorial covers only basic the authentication workflow, but you should take the security of your app as seriously as possible.

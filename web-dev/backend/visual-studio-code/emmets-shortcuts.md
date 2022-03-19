@@ -94,9 +94,11 @@ You should keep this cheatsheet handy as this has many more emmets shortcuts htt
 You will see the here the keyboard shortcut which is used everyday on vscode.
 
 `Alt + tab` Switching windows. e.g. browser to vscode and vice versa.  
-`Ctrl + tab` Switching tabs inside vscode. 
+`Ctrl + tab` Switching tabs inside vscode.   
+``Ctrl + ` `` Switching between terminal and editor.
 
 > 💡 Using external keyboard is beneficial when using laptop. I extensively use cursors of keyboard and `del` `end` `home` page up and down keys.
+
 
 `Ctrl + Shift + P or F1` Open command palette to access all commands    
 `Ctrl + P` Quick Open or Go to a file
