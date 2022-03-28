@@ -17,3 +17,39 @@ call stack - maintains the order of execution context
 arrow function
 
 Examples
+
+
+Client-side JavaScript, in particular, has many APIs available to it — these are not part of the JavaScript language itself, rather they are built on top of the core JavaScript language, providing you with extra superpowers to use in your JavaScript code. They generally fall into two categories:
+- Browser Api
+     constructs built into the browser that sits on top of the JavaScript language and allows you to implement functionality more easily.
+    e.g. Web audio api, 
+- Third Party Api
+  constructs built into third-party platforms (e.g. Twitter, Facebook) that allow you to use some of those platform's functionality in your own web pages (for example,     display your latest Tweets on your web page).
+    e.g. Twitter api to display tweets on your web pages.
+    
+    
+  In addition to above you may find these concept very useful
+  JavaScript libraries — Usually one or more JavaScript files containing custom functions that you can attach to your web page to speed up or enable writing common functionality. Examples include jQuery, Mootools and React.
+JavaScript frameworks — The next step up from libraries, JavaScript frameworks (e.g. Angular and Ember) tend to be packages of HTML, CSS, JavaScript, and other technologies that you install and then use to write an entire web application from scratch. The key difference between a library and a framework is "Inversion of Control". When calling a method from a library, the developer is in control. With a framework, the control is inverted: the framework calls the developer's code.
+
+
+---Editing required
+Common browser APIs
+In particular, the most common categories of browser APIs you'll use (and which we'll cover in this module in greater detail) are:
+
+APIs for manipulating documents loaded into the browser. The most obvious example is the DOM (Document Object Model) API, which allows you to manipulate HTML and CSS — creating, removing and changing HTML, dynamically applying new styles to your page, etc. Every time you see a popup window appear on a page or some new content displayed, for example, that's the DOM in action. Find out more about these types of API in Manipulating documents.
+APIs that fetch data from the server to update small sections of a webpage on their own are very commonly used. This seemingly small detail has had a huge impact on the performance and behavior of sites — if you just need to update a stock listing or list of available new stories, doing it instantly without having to reload the whole entire page from the server can make the site or app feel much more responsive and "snappy". The main API used for this is the Fetch API, although older code might still use the XMLHttpRequest API. You may also come across the term Ajax, which describes this technique. Find out more about such APIs in Fetching data from the server.
+APIs for drawing and manipulating graphics are widely supported in browsers — the most popular ones are Canvas and WebGL, which allow you to programmatically update the pixel data contained in an HTML <canvas> element to create 2D and 3D scenes. For example, you might draw shapes such as rectangles or circles, import an image onto the canvas, and apply a filter to it such as sepia or grayscale using the Canvas API, or create a complex 3D scene with lighting and textures using WebGL. Such APIs are often combined with APIs for creating animation loops (such as window.requestAnimationFrame()) and others to make constantly updating scenes like cartoons and games.
+Audio and Video APIs like HTMLMediaElement, the Web Audio API, and WebRTC allow you to do really interesting things with multimedia such as creating custom UI controls for playing audio and video, displaying text tracks like captions and subtitles along with your videos, grabbing video from your web camera to be manipulated via a canvas (see above) or displayed on someone else's computer in a web conference, or adding effects to audio tracks (such as gain, distortion, panning, etc).
+Device APIs enable you to interact with device hardware: for example, accessing the device GPS to find the user's position using the Geolocation API.
+Client-side storage APIs enable you to store data on the client-side, so you can create an app that will save its state between page loads, and perhaps even work when the device is offline. There are a number of options available, e.g. simple name/value storage with the Web Storage API, and more complex database storage with the IndexedDB API.
+Common third-party APIs
+Third-party APIs come in a large variety; some of the more popular ones that you are likely to make use of sooner or later are:
+
+The Twitter API, which allows you to do things like displaying your latest tweets on your website.
+Map APIs like Mapquest and the Google Maps API allows you to do all sorts of things with maps on your web pages.
+The Facebook suite of APIs enables you to use various parts of the Facebook ecosystem to benefit your app, for example by providing app login using Facebook login, accepting in-app payments, rolling out targeted ad campaigns, etc.
+The Telegram APIs allows you to embed content from Telegram channels on your website, in addition to providing support for bots.
+The YouTube API, which allows you to embed YouTube videos on your site, search YouTube, build playlists, and more.
+The Pinterest API provides tools to manage Pinterest boards and pins to include them in your website.
+The Twilio API, which provides a framework for building voice and video call functionality into your app, sending SMS/MMS from your apps, and more.
