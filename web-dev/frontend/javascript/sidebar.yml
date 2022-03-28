@@ -3,18 +3,18 @@
   link: /toc/modern-javascript
   items:
     - title: 0. Modern Javascript
-      link: /content/web-dev/frontend/sass/introduction
+      link: /content/web-dev/frontend/javascript/modern-javascript
     - title: 1. Variables
-      link: /content/web-dev/frontend/sass/sass-basics
+      link: /content/web-dev/frontend/javascript/variables
     - title: 2. Functions
-      link: /content/web-dev/frontend/sass/less-basics
-    - title: 3. Insights
-      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
-    - title: 4. Practice (Scope chain)
-      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
+      link: /content/web-dev/frontend/javascript/function
+    - title: 3. Scope chain
+      link: /content/web-dev/frontend/javascript/scope-chain
     - title: 5. NodeJs and Browser Environment
-      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
+      link: /content/web-dev/frontend/javascript/nodejs-and-browser
     - title: 6. Closures
-      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
+      link: /content/web-dev/frontend/javascript/closures
     - title: 7. Event Loop
-      link: /content/web-dev/frontend/sass/customize-bootstrap-sass
+      link: /content/web-dev/frontend/javascript/event-loop
+    - title: 8. Tips to improve code quality
+      link: /content/web-dev/frontend/javascript/tips-code-quality

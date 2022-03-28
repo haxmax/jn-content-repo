@@ -1,0 +1,48 @@
+---
+title: Closures
+sidebar: modern-javascript
+label: article
+disableTableOfContents: false
+tableOfContentsDepth: 2
+---
+
+closure , function bounded together with lexical scope.
+
+garbage collection
+
+uses of closure
+
+- module design pattern
+- currying
+- Functions like Once
+- memoize
+- maintaining state in async world
+- setTimeouts
+- Iterators
+- and many more
+
+Global Execution context
+
+better use const, let instead of var
+
+call stack - maintains the order of execution context
+
+arrow function
+
+Examples
+
+- set time out Example
+
+two phase helps in debuging: check
+
+function x() {
+for(var i=1; i<= 5; i++){
+function close(x) {
+setTimeout(function (){
+console.log(x);
+}, x\*1000)
+}
+close(i);
+}
+console.log("Justnotes.in");
+}
