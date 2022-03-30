@@ -1,7 +1,7 @@
 - module:
     display-type: alert-warning
     image: ../../../images/core-physics.png
-    link: toc/sass-and-less
+    link: toc/docker
     level: 1
     course-id: [303]
     title: "Docker"
