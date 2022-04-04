@@ -28,6 +28,7 @@ printDetails =  function(town,country){
     console.log(this.company + " (" + this.shortname +"), " + town + ", " + country)
 }
 
+//name is assigned to `this` in function context
 printDetails.call(name,"New Delhi","India");    //JustNotes.in (JN), New Delhi, India
 printDetails.apply(name,["New Delhi","India"]); //JustNotes.in (JN), New Delhi, India
 printDetails.bind(name,"New Delhi", "India");
