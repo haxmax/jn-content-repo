@@ -6,16 +6,24 @@ disableTableOfContents: false
 tableOfContentsDepth: 2
 ---
 
-var , let and tableOfContentsDepth
+variable in javascript is defined using `const`, `var` and `let`.
 
 # Hoisting
+
 JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.
 
 Hoisting allows functions to be safely used in code before they are declared.
 
-Variable and class declarations are also hoisted, so they too can be referenced before they are declared. Note that doing so can lead to unexpected errors, and is not generally recommended.
+```js
+console.log(num) // print undefined
+var num = 6 // Initialization
+console.log(num) //print 6
+```
+
+Variable and class declarations are also hoisted, so they too can be referenced before they are declared. Note that doing so can lead to unexpected errors, and is not generally recommended. In day to day uses, always prefer const(multi thread safe), then let and var should be avoided.
 
 ## Variable hoisting
+
 Hoisting works with variables too, so you can use a variable in code before it is declared and/or initialized.
 
 However JavaScript only hoists declarations, not initializations! This means that initialization doesn't happen until the associated line of code is executed, even if the variable was originally initialized then declared, or declared and initialized in the same line.
@@ -30,36 +38,22 @@ Variables declared with let and const are also hoisted but, unlike var, are not 
 Javascript is a synchronous single threaded language.
 
 ```js
-console.log(num); // Throws ReferenceError exception as the variable value is uninitialized
-let num = 6; // Initialization
+console.log(num) // Throws ReferenceError exception as the variable value is uninitialized
+let num = 6 // Initialization
 ```
 
 ### Temporal dead zone (TDZ)
+
 let variables cannot be read/written until they have been declared. If no initial value is specified on declaration, the variable is initialized with a value of undefined. Accessing the variable before the declaration results in a ReferenceError.
 
 The variable is said to be in a "temporal dead zone" (TDZ) from the start of the block until the declaration has completed.
 
 ```js
-{ // TDZ starts at beginning of scope
-  console.log(bar); // undefined
-  console.log(foo); // ReferenceError
-  var bar = 1;
-  let foo = 2; // End of TDZ (for foo)
+{
+  // TDZ starts at beginning of scope
+  console.log(bar) // undefined
+  console.log(foo) // ReferenceError
+  var bar = 1
+  let foo = 2 // End of TDZ (for foo)
 }
 ```
-
-Execution Context
-
-- Everything in javascript happens inside in execution context.
-
-- Execution context is created in two phases
-  -- memory allocation : memory to variable with undefined, function is copied to memory
-  -- code execution phase:
-
-return the control to place where the function is invoked.
-
-Memory component and code component
-
-call stack - maintains the order of execution context.
-
-

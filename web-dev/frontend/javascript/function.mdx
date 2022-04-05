@@ -10,29 +10,32 @@ function is first class citizen in javascript
 
 Global Execution context
 
-better use const, let instead of var
-
 call stack - maintains the order of execution context
 
 # Arrow function
 
-## Function Borrowing (call, apply and bind) 
-Function borrowing allows us to use the methods of one object on a different object without having to make a copy of that method and maintain it in two separate places. It is accomplished through the use of . call() , . apply() , or . bind() , all of which exist to explicitly set this on the method we are borrowing
+## Function Borrowing (call, apply and bind)
+
+Function borrowing allows us to use the methods of one object on a different object without having to make a copy of that method and maintain it in two separate places.
+
+It is accomplished through the use of `call()` , `apply()` or `bind()`. All these method explicitly set `this` on the method we are borrowing.
 
 ```js
-let name =  {
-    company : "JustNotes.in",
-    shortname : "JN",
+let name = {
+  company: "JustNotes.in",
+  shortname: "JN",
 }
-printDetails =  function(town,country){
-    console.log(this.company + " (" + this.shortname +"), " + town + ", " + country)
+printDetails = function (town, country) {
+  console.log(
+    this.company + " (" + this.shortname + "), " + town + ", " + country
+  )
 }
 
 //name is assigned to `this` in function context
-printDetails.call(name,"New Delhi","India");    //JustNotes.in (JN), New Delhi, India
-printDetails.apply(name,["New Delhi","India"]); //JustNotes.in (JN), New Delhi, India
-printDetails.bind(name,"New Delhi", "India");
-printDetails(); //calling the function          //JustNotes.in (JN), New Delhi, India
+printDetails.call(name, "New Delhi", "India") //JustNotes.in (JN), New Delhi, India
+printDetails.apply(name, ["New Delhi", "India"]) //JustNotes.in (JN), New Delhi, India
+printDetails.bind(name, "New Delhi", "India")
+printDetails() //calling the function          //JustNotes.in (JN), New Delhi, India
 ```
 
 - Call invokes the function immediately and allows you to pass in arguments one by one
@@ -40,6 +43,7 @@ printDetails(); //calling the function          //JustNotes.in (JN), New Delhi, 
 - Bind returns a new function, and you can invoke/call it anytime you want by invoking a function.
 
 ## Predefined functions
+
 JavaScript has several top-level, built-in functions:
 
 eval()
@@ -71,7 +75,5 @@ The encodeURI() method encodes a Uniform Resource Identifier (URI) by replacing 
 
 encodeURIComponent()
 The encodeURIComponent() method encodes a Uniform Resource Identifier (URI) component by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).
-
-
 
 Examples
