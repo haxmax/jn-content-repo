@@ -18,7 +18,7 @@
     id: 303
     display-type: alert-warning
     image: ../images/basic-chem.png
-    link: /course/software-infrastructure
+    link: /course/devops
     level: 0
     track-id: [5]
     title: "DevOps"
