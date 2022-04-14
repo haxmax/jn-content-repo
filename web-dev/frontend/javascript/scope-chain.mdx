@@ -6,7 +6,33 @@ disableTableOfContents: false
 tableOfContentsDepth: 2
 ---
 
-Execution Context
+# Scope
+
+The current context of execution. The context in which values and expressions are "visible" or can be referenced. If a variable or other expression is not "in the current scope," then it is unavailable for use. Scopes can also be layered in a hierarchy, so that child scopes have access to parent scopes, but not vice versa.
+
+### Global scope
+
+In a programming environment, the global scope is the scope that contains, and is visible in, all other scopes.
+
+In client-side JavaScript, the global scope is generally the web page inside which all the code is being executed.
+
+### Function scope
+
+Each and every function creates its own scope. And the variables declared inside that function are only accessible inside that function and any of its nested functions. This is also called Local Scope.
+
+### Block scope
+
+ES6 introduced let and const variables. With that, it introduced the block scope. Block scope means that the variables defined inside a code clock {} can only be used inside it.
+
+For example, a variable created inside an if statement or for loop can only be accessed within that code block. Same as function scope, it is not accessible outside of the block scope.
+
+## Call Stack
+
+This maintains the order of execution context.
+
+## Execution Context
+
+# Global Execution context
 
 - Everything in javascript happens inside in execution context.
 
@@ -14,28 +40,23 @@ Execution Context
   -- memory allocation : memory to variable with undefined, function is copied to memory
   -- code execution phase:
 
+# Function Execution context
+
 return the control to place where the function is invoked.
 
 Memory component and code component
 
-call stack - maintains the order of execution context.
+call stack -
 
 lexical environment
 
 lexical environment is local memory plus reference to lexical environment of its parent
-
-let & const
-temporal dead zone.
 
 javascript journey
 
 window, global and this
 
 syntax error, type error and reference error
-
-const then let and var should be avoided.
-
-temporal dead zone can produce unexpected result.
 
 scope chain
 

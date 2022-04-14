@@ -6,13 +6,54 @@ disableTableOfContents: false
 tableOfContentsDepth: 2
 ---
 
-function is first class citizen in javascript
-
-Global Execution context
-
-call stack - maintains the order of execution context
+Function is a block of code used to design a particular task.
+It helps us to reuse the code effectively. Function is first class citizen in javascript. In javascript, we can even assign a function to a variable, return a function and can even pass argument as a function.
 
 # Arrow function
+
+Arrow function is compact alternative to traditional function. It can be written in one line which makes code more concise and readable.
+
+```js
+// Traditional Function
+function square(a) {
+  return a * a
+}
+
+// Arrow Function Break Down
+
+// 1. Remove the word "function"  and place arrow between the argument and opening body bracket
+(a) => {
+  return a * a
+}
+
+// 2. Remove the body braces and word "return" -- the return is implied.
+(a) => a * a
+
+// 3. Remove the argument parentheses
+(a) => a * a
+
+// 4. Named arrow function
+
+let square = (a) => a * a
+square(5)
+```
+
+## syntax
+
+```js
+//Single line
+param => expression
+//More than one parameter
+(param1, paramN) => expression
+//more than one line
+param => {
+let a = 1;
+return a + param;
+}
+```
+
+> &#128161; Arrow function does not have binding to `this` and `supper`.
+> Arrow function can't be used as constructors.
 
 ## Function Borrowing (call, apply and bind)
 
@@ -42,38 +83,53 @@ printDetails() //calling the function          //JustNotes.in (JN), New Delhi, I
 - Apply invokes the function immediately and allows you to pass in arguments as an array.
 - Bind returns a new function, and you can invoke/call it anytime you want by invoking a function.
 
+### Arrow function uses.
+
+To return an object literal expression requires parentheses around expression:
+
+> params => ({foo: "a"}) // returning the object {foo: "a"}
+
+Rest parameters are supported:
+
+> (a, b, ...r) => expression
+
+Destructuring within params supported:
+
+> ([a, b] = [10, 20]) => a + b; // result is 30  
+> ({ a, b } = { a: 10, b: 20 }) => a + b; // result is 30
+
 ## Predefined functions
 
 JavaScript has several top-level, built-in functions:
 
-eval()
-The eval() method evaluates JavaScript code represented as a string.
+- eval()
+  The eval() method evaluates JavaScript code represented as a string.
 
-uneval()
-The uneval() method creates a string representation of the source code of an Object.
+- uneval()
+  The uneval() method creates a string representation of the source code of an Object.
 
-isFinite()
-The global isFinite() function determines whether the passed value is a finite number. If needed, the parameter is first converted to a number.
+- isFinite()
+  The global isFinite() function determines whether the passed value is a finite number. If needed, the parameter is first converted to a number.
 
-isNaN()
-The isNaN() function determines whether a value is NaN or not. Note: coercion inside the isNaN function has interesting rules; you may alternatively want to use Number.isNaN(), as defined in ECMAScript 2015, or you can use typeof to determine if the value is Not-A-Number.
+- isNaN()
+  The isNaN() function determines whether a value is NaN or not. Note: coercion inside the isNaN function has interesting rules; you may alternatively want to use Number.isNaN(), as defined in ECMAScript 2015, or you can use typeof to determine if the value is Not-A-Number.
 
-parseFloat()
-The parseFloat() function parses a string argument and returns a floating point number.
+- parseFloat()
+  The parseFloat() function parses a string argument and returns a floating point number.
 
-parseInt()
-The parseInt() function parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems).
+- parseInt()
+  The parseInt() function parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems).
 
-decodeURI()
-The decodeURI() function decodes a Uniform Resource Identifier (URI) previously created by encodeURI or by a similar routine.
+- decodeURI()
+  The decodeURI() function decodes a Uniform Resource Identifier (URI) previously created by encodeURI or by a similar routine.
 
-decodeURIComponent()
-The decodeURIComponent() method decodes a Uniform Resource Identifier (URI) component previously created by encodeURIComponent or by a similar routine.
+- decodeURIComponent()
+  The decodeURIComponent() method decodes a Uniform Resource Identifier (URI) component previously created by encodeURIComponent or by a similar routine.
 
-encodeURI()
-The encodeURI() method encodes a Uniform Resource Identifier (URI) by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).
+- encodeURI()
+  The encodeURI() method encodes a Uniform Resource Identifier (URI) by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).
 
-encodeURIComponent()
-The encodeURIComponent() method encodes a Uniform Resource Identifier (URI) component by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).
+- encodeURIComponent()
+  The encodeURIComponent() method encodes a Uniform Resource Identifier (URI) component by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).
 
-Examples
+For details about arrow function, you may refer to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">MDN article - Arrow function expressions</a>

@@ -32,6 +32,12 @@ Until that point in the execution is reached the variable has its default initia
 
 > Note: Conceptually variable hoisting is often presented as the interpreter "splitting variable declaration and initialization, and moving (just) the declarations to the top of the code".
 
+> 🤔 How variable hosting is implemented by JavaScript creators.
+> Compilation has several phases:  
+> During scanning the code phase, variables are identified and memory is allocated to them with value undefined.  
+> During code execution phase, variables are given value.
+> More about this in _How execution context is created?_
+
 ## let and const hoisting
 
 Variables declared with let and const are also hoisted but, unlike var, are not initialized with a default value. An exception will be thrown if a variable declared with let or const is read before it is initialized.
