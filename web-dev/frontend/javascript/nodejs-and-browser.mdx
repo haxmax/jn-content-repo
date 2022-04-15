@@ -51,3 +51,69 @@ Third-party APIs come in a large variety; some of the more popular ones that you
 # NodeJs
 
 # NodeJs vs Browser
+
+Both the browser and Node.js use JavaScript as their programming language.However, Building apps that run in the browser is a completely different thing than building a Node.js application.
+
+Despite the fact that it's always JavaScript, there are some key differences that make the experience radically different.
+
+- In the browser, most of the time what you are doing is interacting with the DOM, or other Web Platform APIs like Cookies. Those do not exist in Node.js, of course. You don't have the document, window and all the other objects that are provided by the browser.
+
+- And in the browser, we don't have all the nice APIs that Node.js provides through its modules, like the filesystem access functionality.
+
+- Another big difference is that in Node.js you control the environment. You know which version of Node.js you will run the application on. Compared to the browser environment, where you don't get the luxury to choose what browser your visitors will use, this is very convenient. This means that you can write all the modern ES6-7-8-9 JavaScript that your Node.js version supports.
+
+- Since JavaScript moves so fast, but browsers can be a bit slow to upgrade, sometimes on the web you are stuck with using older JavaScript / ECMAScript releases.Here, You can use Babel to transform your code to be ES5-compatible before shipping it to the browser, but in Node.js, you won't need that.
+
+- Another difference is that Node.js supports both the CommonJS and ES module systems (since Node.js v12), while in the browser we are starting to see the ES Modules standard being implemented.
+  > 📝 In practice, this means that you can use both require() and import in Node.js, while you are limited to import in the browser.
+
+## window, global and this
+
+### Global object
+
+A global object is an object that always exists in the global scope.
+
+In JavaScript, there's always a global object defined. In a web browser, when scripts create global variables defined with the var keyword, they're created as members of the global object. (In Node.js this is not the case.) The global object's interface depends on the execution context in which the script is running. For example:
+
+- In a web browser, any code which the script doesn't specifically start up as a background task has a `window` as its global object. This is the vast majority of JavaScript code on the Web.
+- Code running in a Worker has a `WorkerGlobalScope` object as its global object.
+- Scripts running under Node.js have an object called global as their global object.
+
+> 📝 Unlike var, the statements let and const do not create properties of the global object.
+
+### window object in the Browser
+
+The `window` object is the Global Object in the Browser. Any Global Variables or Functions can be accessed as properties of the `window` object.
+
+Access Global Variables
+
+```js
+var foo = "foobar"
+foo === window.foo // Returns: true
+```
+
+After defining a Global Variable foo, we can access its value directly from the `window` object, by using the variable name foo as a property name of the Global Object `window.foo`.
+
+```js
+//Access Global Functions
+function greeting() {
+  console.log("Hi!")
+}
+window.greeting() // It is the same as the normal invoking: greeting();
+```
+
+The example above explains how Global Functions are stored as properties in the window object. We created a Global Function called greeting, then invoked it using the window object.
+
+### globalThis
+
+The global `globalThis` property contains the global this value, which is akin to the global object.
+
+Historically, accessing the global object has required different syntax in different JavaScript environments. On the web you can use `window`, `self`, or `frames` - but in Web Workers only `self` will work.
+
+> 📝 In Node.js none of these work, and you must instead use global. The `this` keyword could be used inside functions running in non–strict mode, but `this` will be `undefined `in Modules and inside functions running in strict mode.
+
+The `globalThis` property provides a standard way of accessing the global `this` value (and hence the global object itself) across environments. Unlike similar properties such as window and self, it's guaranteed to work in window and non-window contexts. In this way, you can access the global object in a consistent manner without having to know which environment the code is being run in. To help you remember the name, just remember that in global scope the this value is `globalThis`.
+
+# Common Errors and exception
+
+## syntax error, type error and reference error

@@ -6,6 +6,46 @@ disableTableOfContents: false
 tableOfContentsDepth: 2
 ---
 
+Code should be clean and readable. For making code presentable several convention has been made.
+
 # Javascript Conventions
 
+### File Naming Convention
+
+File names must be all lowercase and may include underscores (\_) or dashes (-), but no additional punctuation. Follow the convention that your project uses. Filenames’ extension should be .js, .ts
+
+### Variable Naming Conventions
+
+We use camelCase for variable and function.
+
+Constants should be written in capital with underscores.
+
+### Code Indenting
+
+Use 2 space or 4 space to indent your code.
+
+### Most commonly used practices
+
+# Linting
+
+Most popular linter is ESLint. By using ESList,you can automate the code quality checks and can automatically fix it with `eslint --fix`.
+
+## using ESLint
+
+ESLint is an open source Javascript linter. Code Linting is a type of static analysis of code. It is used to find problematic patterns. Most programming language has its own linters, sometimes it is clubbed in compilation process.
+
+```shell
+# First install the necessary ESLint dependencies
+npm install --save-dev eslint-config-react-app
+```
+
+Create a new file at the root of the site name `.eslintrc.js`
+
+```shell
+# Create a config file for ESLint
+touch .eslintrc.js
+```
+
 # DRY code
+
+# SOLID
