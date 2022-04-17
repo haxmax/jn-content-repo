@@ -116,4 +116,56 @@ The `globalThis` property provides a standard way of accessing the global `this`
 
 # Common Errors and exception
 
+## undefined
+
+In JavaScript there is Undefined (type), undefined (value) and undefined (variable).
+
+Undefined (type) is a built-in JavaScript type.
+
+undefined (value) is a primitive and is the sole value of the Undefined type. Any property that has not been assigned a value, assumes the undefined value. A function without a return statement, or a function with an empty return statement returns undefined. The value of an function argument is undefined when not provided.
+
+```js
+var a
+typeof a //"undefined"
+
+window.b
+typeof window.b //"undefined"
+
+var c = (function () {})()
+typeof c //"undefined"
+
+var d = (function (e) {
+  return e
+})()
+typeof d //"undefined"
+```
+
+undefined (variable) is a global property whose initial value is undefined (value), Since its a global property we can also access it as a variable. For consistency I'm always going to call it a variable in this article.
+
+```js
+typeof undefined //"undefined"
+
+var f = 2
+f = undefined //re-assigning to undefined (variable)
+typeof f //"undefined"
+
+undefined = "hello world" //assign a string to undefined (variable)
+typeof undefined //"string"
+
+f = undefined
+typeof f //"string"
+f //"hello world"
+```
+
+> 📝 Needless to say, re-assigning values to the undefined variable is very bad practice, and in fact its not allowed by ECMA 5 (though amongst the current set of full browser releases, only Safari enforces this).
+
+And then there's null?
+Yes, generally well understood but worth re-stating: undefined is distinct from null which is also a primitive value representing the intentional absence of a value. The only similarity between undefined and null is they both evaluate to false.
+
 ## syntax error, type error and reference error
+
+A ReferenceError occurs when you try to use a variable that doesn't exist at all.
+
+A TypeError occurs when the variable exists, but the operation you're trying to perform is not appropriate for the type of value it contains. In the case where the detailed message says "is not defined", this can occur if you have a variable whose value is the special undefined value, and you try to access a property of it.
+
+Syntax error occurs while parsing JavaScript code. No code is executed in case of syntax error while in reference error and type error javascript will execute the code prior to error occurred.
