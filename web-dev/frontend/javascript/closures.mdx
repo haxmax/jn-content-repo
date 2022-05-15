@@ -7,13 +7,162 @@ tableOfContentsDepth: 2
 ---
 
 A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
-Source :MDN
 
-closure , function bounded together with lexical scope.
+> Source :MDN
 
-garbage collection
+```JavaScript
+function init() {
+  var name = 'Mozilla'; // name is a local variable created by init
+  function displayName() { // displayName() is the inner function, a closure
+    alert(name); // use variable declared in the parent function
+  }
+  displayName();
+}
+init();
+```
 
-uses of closure
+init() creates a local variable called name and a function called displayName(). The displayName() function is an inner function that is defined inside init() and is available only within the body of the init() function. Note that the displayName() function has no local variables of its own. However, since inner functions have access to the variables of outer functions, displayName() can access the variable name declared in the parent function, init().
+
+The word lexical refers to the fact that lexical scoping uses the location where a variable is declared within the source code to determine where that variable is available. Nested functions have access to variables declared in their outer scope.
+
+Let's take an interesting Example.
+
+```js
+function makeAdder(x) {
+  return function (y) {
+    return x + y
+  }
+}
+
+var add5 = makeAdder(5)
+var add10 = makeAdder(10)
+
+console.log(add5(2)) // 7
+console.log(add10(2)) // 12
+```
+
+Every function in javascript is enclosed inside a closure. Here, add5 and add10 are both closures. They share the same function body definition, but store different lexical environments. In add5's lexical environment, x is 5, while in the lexical environment for add10, x is 10.
+
+### Closures inside a loop should not be used
+
+garbage collection is main issue while using in loop. It may also produce unexpected result. See examples below:
+
+```js
+function x() {
+  for (var i = 1; i <= 5; i++) {
+    setTimeout(function () {
+      console.log(i)
+    }, i * 1000)
+  }
+  console.log("Justnotes.in")
+}
+x()
+```
+
+This print unexpected result:
+"Justnotes.in"  
+6  
+6  
+6  
+6  
+6
+
+This happens because the reference of `i` is passed to function with lexical scope not the value. And reference of `i` is same location of memory in every copy of `settimeout` function inside the loop when the timer expires.
+
+By changing var to let you can see that it print as expected. Now, different copy `i` will be passed in lexical scope to function as let is block scope. i.e new copy of `i` is bound in every iteration of for loop below.
+
+```js
+function x() {
+  for (let i = 1; i <= 5; i++) {
+    setTimeout(function () {
+      console.log(i)
+    }, i * 1000)
+  }
+  console.log("Justnotes.in")
+}
+x()
+```
+
+This print  
+"Justnotes.in"  
+1  
+2  
+3  
+4  
+5
+
+This example is using inner function to produce expected result. This inner function forms closure with `settimeout` function and for each iteration different value of `i` is passed to the function and we get expected result.
+
+```js
+function x() {
+  for (var i = 1; i <= 5; i++) {
+    function close(y) {
+      setTimeout(function () {
+        console.log(y)
+      }, y * 1000)
+    }
+    close(i)
+  }
+  console.log("Justnotes.in")
+}
+x()
+```
+
+This print
+"Justnotes.in"  
+1  
+2  
+3  
+4  
+5
+
+### Closures and Arrow function
+
+```js
+class Dog {
+  constructor(name) {
+    this.name = name
+  }
+
+  bark() {
+    console.log(`Woof, my name is ${this.name}`)
+  }
+
+  sitAndBark() {
+    setTimeout(function () {
+      console.log(`Woof, my name is ${this.name}`)
+    }, 1000)
+  }
+}
+
+let rex = new Dog("Rex")
+rex.bark() // Woof, my name is Rex
+rex.sitAndBark() // Woof, my name is
+```
+
+`this` is not defined in `rex.sitAndBark()`. The `setTimeOut` argument function has its own `this` which is different from `this` inside bark method. This can be solved by two ways as discussed below.
+
+```js
+sitAndBark() {
+  setTimeout((function() { console.log(`Woof, my name is ${this.name}`) }).bind(this), 1000)
+}
+```
+
+or by using arrow function
+
+```js
+sitAndBark() {
+  setTimeout(() => { console.log(`Woof, my name is ${this.name}`) }, 1000)
+}
+```
+
+Now, it works as intended.
+
+```js
+rex.sitAndBark() // 'Woof, my name is Rex'
+```
+
+### Uses of closure
 
 - module design pattern
 - currying
@@ -25,39 +174,24 @@ uses of closure
 - and many more
 
 ## Common Design Pattern in Javascript
-Module design pattern
-Observer design pattern
-Prototype design pattern
-singleton design pattern
-links : https://www.digitalocean.com/community/conceptual_articles/module-design-pattern-in-javascript
-https://www.digitalocean.com/community/tutorial_series/javascript-design-patterns
 
-Global Execution context
+- Module design pattern
+- Observer design pattern
+- Prototype design pattern
+- singleton design pattern
 
-better use const, let instead of var
+External links :
 
-call stack - maintains the order of execution context
-
-arrow function
-
-Examples
-
-- set time out Example
-
-two phase helps in debuging: check
-
-function x() {
-for(var i=1; i<= 5; i++){
-function close(x) {
-setTimeout(function (){
-console.log(x);
-}, x\*1000)
-}
-close(i);
-}
-console.log("Justnotes.in");
-}
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
-
-
+<a
+  target="_blank"
+  src="https://www.digitalocean.com/community/tutorial_series/javascript-design-patterns"
+>
+  {" "}
+  javascript design pattern
+</a> <br />
+<a
+  target="_blank"
+  src="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+>
+  closure on MDN
+</a>
