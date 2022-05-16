@@ -6,20 +6,39 @@ disableTableOfContents: false
 tableOfContentsDepth: 2
 ---
 
-Javascript is single threaded language.
+JavaScript has a runtime model based on an event loop, which is responsible for executing the code, collecting and processing events, and executing queued sub-tasks. This model is quite different from models in other languages like C and Java.(Source: MDN)
 
-It has only one call stack
+Runtime concepts
+The following sections explain a theoretical model. Modern JavaScript engines implement and heavily optimize the described semantics.
 
-what if we want delay.
-call stack has no timer.
+### Visual representation
 
-call back queue
+<img
+  src="the_javascript_runtime_environment_example.svg"
+  alt="stack heap queue"
+></img>
 
-- starvation
+More detail you must visit MDN Page, which has lots of detail written in very simple way.
 
-https://stackoverflow.com/questions/35491160/is-javascript-settimeout-guaranteed-to-fire
+<a
+  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop"
+  target="_blank"
+>
+  Link to MDN article on Event Loop
+</a>
+<br />
 
-microtask queue
-
-- promise
-- mutation observer
+<a
+  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management"
+  target="_blank"
+>
+  Link to MDN article on Memory Management
+</a>
+<br />
+<a
+  href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#what-is-the-event-loop"
+  target="_blank"
+>
+  {" "}
+  NodeJs Advance Event Loop{" "}
+</a>
